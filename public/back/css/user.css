@@ -1,0 +1,6 @@
+
+.lt_main .lt_content table th,
+.lt_main .lt_content table td{
+  vertical-align: middle;
+  text-align: center;
+}

@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/user.css">
+
 </head>
 <body>
   <!-- 左侧部分 -->
@@ -23,7 +24,7 @@
     <div class="nav">
       <ul>
         <li>
-          <a href="user.html">
+          <a href="user.html" class="current">
             <i class="glyphicon glyphicon-user"></i>
             <span>用户管理</span>
           </a>
@@ -60,13 +61,33 @@
     <div class="container-fluid">
       <ol class="breadcrumb">
         <li><a href="#">管理系统</a></li>
-        <li class="active">首页</li>
+        <li class="active">用户管理</li>
       </ol>
       <div class="lt_content">
-        <!--  为 ECharts 准备一个具备大小（宽高）的 DOM - -->
-        <div class="echarts_1 pull-left"></div>
-        <div class="echarts_2 pull-right"></div>
+        <table class="table table-bordered table-hover">
+          <thead> 				
+            <tr>
+              <th>序号</th>
+              <th>用户名</th>
+              <th>手机号</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>itcast</td>
+              <td>15102324243</td>
+              <td>正常</td>
+              <td>
+                <button class="btn btn-danger">禁用</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      
       
     </div>
   </div>
@@ -100,6 +121,7 @@
   <script src="./lib/nprogress/nprogress.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/checkoutLogin.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="./js/user.js"></script>
+  <script src="./js/user.js"></script>
 </body>
 </html>
