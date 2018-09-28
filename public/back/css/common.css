@@ -19,6 +19,9 @@ ul{
 .mt_150{
   margin-top: 150px;
 }
+.mb_20{
+  margin-bottom: 20px;
+}
 .panel .panel-title{
   height: 40px;
   line-height: 40px;
@@ -123,4 +126,9 @@ a.current{
   margin-top: 20px;
 }
 
+.lt_main .lt_content table th,
+.lt_main .lt_content table td{
+  vertical-align: middle;
+  text-align: center;
+}
 
