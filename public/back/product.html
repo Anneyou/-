@@ -59,16 +59,37 @@
     </div>
     <div class="container-fluid">
       <ol class="breadcrumb">
-        <li><a href="#">管理系统</a></li>
+        <li><a href="index.html">管理系统</a></li>
         <li class="active">商品管理</li>
       </ol>
-      
+      <div class="lt_content">
+        <table class="table table-bordered table-hover">
+          <thead>						
+            <tr>
+              <th>序号</th>
+              <th>商品名称</th>
+              <th>商品描述</th>
+              <th>商品库存</th>
+              <th>商品尺寸</th>
+              <th>商品状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑 -->
+          </tbody>
+        </table>
+        <!-- 分页标签 -->
+        <div class="pull-right">
+          <ul id="paginator"></ul>
+        </div>
+      </div>
       
     </div>
   </div>
 
 
-  <!-- 模态框 -->
+  <!-- 退出登录模态框 -->
   <div class="modal fade" id="logoutModal" tabindex="-1" >
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
@@ -90,11 +111,37 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
+
+  <!-- tbody模板引擎 -->
+  <script type="text/html" id="tmp">
+    {{ each rows v i}}
+    <tr>
+      <td>{{ i+1+(page-1) * size }}</td>
+      <td>{{ v.proName }}</td>
+      <td>{{ v.proDesc }}</td>
+      <td>{{ v.num }}</td>
+      <td>{{ v.size }}</td>
+      <td>{{ v.statu == 1 ? '已上架': '已下架'}}</td>
+      <td>
+        {{ if v.statu == 1 }}
+        <button class="btn btn-danger">下架</button>
+        {{ /if }}
+        {{ if v.statu == 0 }}
+        <button class="btn btn-danger">上架</button>
+        {{ /if }}
+      </td>
+    </tr>
+    {{ /each}}
+  </script>
+
   <script src="./lib/jquery/jquery.min.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="./lib/echarts/echarts.min.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/checkoutLogin.js"></script>
+  <script src="./js/product.js"></script>
 </body>
 </html>
