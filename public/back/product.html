@@ -7,6 +7,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/index.css">
 </head>
@@ -63,6 +64,7 @@
         <li class="active">商品管理</li>
       </ol>
       <div class="lt_content">
+        <button class="btn btn-default mb_20" id="productBtn">添加分类</button>
         <table class="table table-bordered table-hover">
           <thead>						
             <tr>
@@ -89,6 +91,66 @@
   </div>
 
 
+  <!-- 添加商品模态框 -->
+  <div class="modal fade" id="productModal" tabindex="-1" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+            <form id="form">
+              <div class="form-group">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span id="dropdownTxt">请选择二级目录</span>  
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" >
+                    <!-- 挖个坑 -->
+                  </ul>
+                </div>
+                <input type="hidden" name="brandId">
+              </div>
+              <div class="form-group">
+                <input type="text" name="proName"  class="form-control" placeholder="请输入商品名称" >
+              </div>
+              <div class="form-group">
+                <textarea name="proDesc" cols="3" class="form-control" placeholder="请输入商品描述"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" name="num"  class="form-control" placeholder="请输入商品库存" >
+              </div>
+              <div class="form-group">
+                <input type="text" name="size"  class="form-control" placeholder="请输入商品尺码" >
+              </div>
+              <div class="form-group">
+                <input type="text" name="oldPrice"  class="form-control" placeholder="请输入商品原价" >
+              </div>
+              <div class="form-group">
+                <input type="text" name="price"  class="form-control" placeholder="请输入商品现价" >
+              </div>
+              <div class="form-group">
+                <label class="btn btn-default" for="fileupload">上传图片</label>
+                <input type="file" style="display:none" name="pic1" id="fileupload" data-url="/product/addProductPic" multiple>
+              </div>
+              <div class="form-group" id="imgBox">
+                <!-- 至少添加三张图片 -->
+                
+                <input type="hidden" name="picStatus">
+
+              </div>
+            </form>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" form="form" class="btn btn-primary" id="add">添加</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
   <!-- 退出登录模态框 -->
   <div class="modal fade" id="logoutModal" tabindex="-1" >
     <div class="modal-dialog modal-sm" role="document">
@@ -105,7 +167,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" id="logoutBtn" class="btn btn-primary">确定</button>
+          <button type="button" id="logoutBtn" class="btn btn-primary">退出</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -134,10 +196,20 @@
     {{ /each}}
   </script>
 
+  <!-- 添加商品模态框下拉列表模板引擎 -->
+  <script type="text/html" id="productTmp">
+    {{ each rows v i}}
+    <li><a href="#" data-id="{{ v.id }}">{{ v.brandName}}</a></li>
+    {{ /each}}
+  </script>
+
   <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="./lib/echarts/echarts.min.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <script src="./js/common.js"></script>
